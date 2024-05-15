@@ -13,12 +13,12 @@ Python libraries required to run the application:
 - pandas
 - geopandas
 - matplotlib
-- io
-- datetime
 - streamlit
+- io (in standard library)
+- datetime (in standard library)
 
 How to Use:
 
-1) Install dependencies: Using pip, install the required libraries listed above. You can find instructions on installing pip at https://pip.pypa.io/en/stable/installation/
+1) Install dependencies: Using pip, install the required libraries listed above. Dependencies can also be installed from the 'requirements.txt' file.
 2) Run the app: Navigate to the directory containing the app script (e.g., app.py) and run the following command in your terminal: streamlit run eq_dashboard.py
    * please ensure that the extracted folder from Natural Earth is in the same directory as eq_dashboard.py
