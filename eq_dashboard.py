@@ -39,7 +39,7 @@ def get_usgs_data(links: dict):
 def get_map_dist(df: pd.DataFrame, freq: str, time: datetime):
   fig, ax = plt.subplots()
   # Load worldmap shape file from https://www.naturalearthdata.com/downloads/110m-cultural-vectors/
-  countries = gpd.read_file(r'.\ne_110m_admin_0_countries')
+  countries = gpd.read_file('./ne_110m_admin_0_countries')
   countries.plot(color="lightgrey", ax=ax)
   # Generate scatter plot from lat/long data over worldmap.
   df.plot(x="LONGITUDE", y="LATITUDE", kind="scatter", c="MAG", colormap="Reds", 
