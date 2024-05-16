@@ -91,9 +91,10 @@ def main(time: datetime):
 
       st.dataframe(st.session_state.eq_data[freq])
 
-# Run application:
-timestamp_get = False
-if timestamp_get == False:
+@st.cache
+def get_time():
   time = datetime.datetime.now()
-  timestamp_get = True
-main(time)
+  return time
+  
+# Run application:
+main(get_time())
