@@ -53,7 +53,7 @@ def get_mag_vs_depth(df: pd.DataFrame, freq: str, time: datetime):
   fig, ax = plt.subplots()
 
   df.plot(x="MAG", y="DEPTH", kind="scatter", c="MAG", colormap="Reds", 
-          title=f"Magnitude vs Depth ({freq})", ax=ax)
+          title=f"Magnitude vs Depth (km) : ({freq})", ax=ax)
   plt.figtext(0.5, -0.01, f"Generated from data recovered at {time}", wrap=True, 
               horizontalalignment='center', fontsize=12)
   ax.invert_yaxis() # Invert axis to demonstrate depth more intuitively
@@ -70,8 +70,8 @@ def main():
       st.session_state.eq_data = get_usgs_data(usgs_links)
     if type(st.session_state.eq_data) == type(None):
       st.write('There was an error connecting to the database. Please reload webpage and try again.')
-    else:
-      st.write(f'Data fetched from USGS live feed successfully at {data_fetch_time}')
+  
+  st.write(f'Data fetched from USGS live feed successfully at {data_fetch_time}')
   
   freq = st.selectbox(label='See earthquakes from...', options=list(st.session_state.eq_data.keys()), 
                       placeholder='Select frequency...', index=None)
