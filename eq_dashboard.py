@@ -64,6 +64,7 @@ def get_mag_vs_depth(df: pd.DataFrame, freq: str, time: datetime):
 
 def main():
   st.title("Earthquake Dashboard")
+  data_fetch_time = None
 
   if 'eq_data' not in st.session_state: # Load USGS data only once per session state
     with st.spinner('Fetching data on recent earthquakes...'):
