@@ -55,6 +55,7 @@ def get_mag_vs_depth(df: pd.DataFrame, freq: str, time: datetime):
   df.plot(x="MAG", y="DEPTH", kind="scatter", c="MAG", colormap="Reds", 
           title=f"Magnitude vs Depth ({freq})", ax=ax)
   ax.set_ylabel("DEPTH (kilometers)")
+  ax.grid(visible=True, which='major')
   plt.figtext(0.5, -0.01, f"Generated from data recovered at {time}", wrap=True, 
               horizontalalignment='center', fontsize=12)
   ax.invert_yaxis() # Invert axis to demonstrate depth more intuitively
