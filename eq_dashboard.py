@@ -62,18 +62,16 @@ def get_mag_vs_depth(df: pd.DataFrame, freq: str, time: datetime):
 
   return plt
 
-def main():
+def main(time: datetime):
   st.title("Earthquake Dashboard")
-  data_fetch_time = ''
 
   if 'eq_data' not in st.session_state: # Load USGS data only once per session state
     with st.spinner('Fetching data on recent earthquakes...'):
       st.session_state.eq_data = get_usgs_data(usgs_links)
-      data_fetch_time = datetime.datetime.now() # Data collection timestamp for figures
     if type(st.session_state.eq_data) == type(None):
       st.write('There was an error connecting to the database. Please reload webpage and try again.')
   
-  st.write(f'Data fetched from USGS live feed successfully at {data_fetch_time}')
+  st.write(f'Data fetched from USGS live feed successfully at {time}')
   
   freq = st.selectbox(label='See earthquakes from...', options=list(st.session_state.eq_data.keys()), 
                       placeholder='Select frequency...', index=None)
@@ -86,12 +84,13 @@ def main():
       col1, col2 = st.columns(2, gap='medium') 
 
       with col1:
-        st.pyplot(get_map_dist(st.session_state.eq_data[freq], freq, data_fetch_time))
+        st.pyplot(get_map_dist(st.session_state.eq_data[freq], freq, time))
 
       with col2:
-        st.pyplot(get_mag_vs_depth(st.session_state.eq_data[freq], freq, data_fetch_time))
+        st.pyplot(get_mag_vs_depth(st.session_state.eq_data[freq], freq, time))
 
       st.dataframe(st.session_state.eq_data[freq])
 
 # Run application:
+time = datetime.datetime.now()
 main()
