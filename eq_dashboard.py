@@ -52,8 +52,8 @@ def get_map_dist(df: pd.DataFrame, freq: str, time: datetime):
 def get_mag_vs_depth(df: pd.DataFrame, freq: str, time: datetime):
   fig, ax = plt.subplots()
 
-  df.plot(x="MAG", y="DEPTH", kind="scatter", c="MAG", colormap="Reds", 
-          title=f"Magnitude vs Depth (km) : ({freq})", ax=ax)
+  df.plot(x="MAG", y="DEPTH (kilometers)", kind="scatter", c="MAG", colormap="Reds", 
+          title=f"Magnitude vs Depth ({freq})", ax=ax)
   plt.figtext(0.5, -0.01, f"Generated from data recovered at {time}", wrap=True, 
               horizontalalignment='center', fontsize=12)
   ax.invert_yaxis() # Invert axis to demonstrate depth more intuitively
