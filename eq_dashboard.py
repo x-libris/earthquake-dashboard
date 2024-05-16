@@ -92,5 +92,8 @@ def main(time: datetime):
       st.dataframe(st.session_state.eq_data[freq])
 
 # Run application:
-time = datetime.datetime.now()
+timestamp_get = False
+if timestamp_get == False:
+  time = datetime.datetime.now()
+  timestamp_get = True
 main(time)
