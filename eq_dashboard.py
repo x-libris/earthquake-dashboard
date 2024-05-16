@@ -93,4 +93,4 @@ def main(time: datetime):
 
 # Run application:
 time = datetime.datetime.now()
-main()
+main(time)
